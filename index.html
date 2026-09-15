@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aswin & Harinni - Wedding Invitation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     
     <style>
@@ -14,102 +14,82 @@
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         
         .hidden { display: none !important; }
-        .fade-in { animation: fadeIn 0.8s ease-in; }
+        .fade-in { animation: fadeIn 1s ease-in; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .page-section { width: 100vw; min-height: 100vh; position: relative; }
 
-        /* ===== TV LANDING PAGE ===== */
-        .tv-frame { width: 100%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #1a1a1a; }
-        .tv-screen { width: 90%; max-width: 1200px; height: 70vh; background: #000; border-radius: 20px; overflow: hidden; position: relative; box-shadow: 0 0 50px rgba(255, 215, 0, 0.3); border: 15px solid #2a2a2a; }
-        .galaxy-bg-off, .couple-content { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .galaxy-image, .couple-image { width: 100%; height: 100%; object-fit: cover; }
-        .names-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; }
-        .couple-names { font-size: 4rem; margin-bottom: 20px; text-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
-        .couple-names .groom, .couple-names .bride { display: block; margin: 10px 0; }
-        .couple-names .ampersand { font-size: 3rem; color: #FFD700; }
-        .tagline { font-size: 1.5rem; margin-bottom: 15px; font-weight: 300; }
-        .invitation-text { font-size: 1.3rem; margin-bottom: 30px; }
-        .date-enter-container { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; justify-content: center; }
-        .date-box { background: rgba(0, 0, 0, 0.8); border: 3px solid #FFD700; border-radius: 15px; padding: 15px 30px; min-width: 200px; }
-        .date-text { font-size: 1.8rem; font-weight: 700; color: #FFD700; letter-spacing: 2px; }
-        .enter-btn { padding: 15px 40px; font-size: 1.3rem; background: linear-gradient(135deg, #FFD700, #FFA500); border: none; border-radius: 50px; color: #000; cursor: pointer; font-weight: 600; transition: all 0.3s; box-shadow: 0 5px 20px rgba(255, 215, 0, 0.5); }
-        .enter-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.8); }
-        .scanlines { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 1px, transparent 1px, transparent 2px); z-index: 10; pointer-events: none; }
-        .power-button { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 20; cursor: pointer; animation: pulse 2s infinite; text-align: center; }
-        .power-icon { font-size: 80px; color: #FFD700; text-shadow: 0 0 30px #FFD700; }
-        .power-button p { font-size: 20px; margin-top: 10px; color: #FFD700; }
-        @keyframes pulse { 0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; } 50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; } }
-        .tv-stand { width: 200px; height: 30px; background: #2a2a2a; margin-top: 20px; border-radius: 0 0 10px 10px; }
+        /* ===== PAGE 1: SAMSUNG TV LANDING ===== */
+        .tv-landing-page { width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .starry-background { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); z-index: 0; }
+        .stars-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .star { position: absolute; background: white; border-radius: 50%; animation: twinkle 3s infinite; }
+        @keyframes twinkle { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        .shooting-star { position: absolute; width: 2px; height: 2px; background: white; border-radius: 50%; animation: shoot 3s linear infinite; opacity: 0; }
+        .shooting-star::before { content: ''; position: absolute; top: 0; left: 0; width: 80px; height: 1px; background: linear-gradient(to right, rgba(255,255,255,0.8), transparent); transform: translateX(-80px); }
+        @keyframes shoot { 0% { transform: translate(0, 0); opacity: 0; } 10% { opacity: 1; } 20% { transform: translate(-300px, 300px); opacity: 0; } 100% { opacity: 0; } }
+        .samsung-tv { position: relative; z-index: 10; width: 70%; max-width: 900px; background: #1a1a1a; border-radius: 15px; padding: 15px; box-shadow: 0 0 0 2px #333, 0 20px 60px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0, 0, 0, 0.5); }
+        .tv-screen-container { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 8px; overflow: hidden; box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8); }
+        .tv-screen-image { width: 100%; height: 100%; object-fit: cover; }
+        .tv-screen-overlay { position: absolute; bottom: 0; left: 0; width: 100%; height: 50%; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, transparent 100%); display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding: 40px 20px 30px; }
+        .tv-couple-names { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 700; color: #f4e4c1; letter-spacing: 5px; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); margin-bottom: 10px; }
+        .tv-tagline { font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: #fff; font-style: italic; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8); }
+        .tv-bottom-bar { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px 10px; }
+        .samsung-logo { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; color: #ccc; letter-spacing: 4px; }
+        .tv-speaker { width: 80px; height: 8px; background: #333; border-radius: 4px; box-shadow: inset 0 1px 2px rgba(0,0,0,0.5); }
+        .power-button-container { position: relative; }
+        .power-button { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%); border: 3px solid #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(255, 0, 0, 0.6), 0 0 40px rgba(255, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.3); transition: all 0.3s; animation: powerGlow 2s infinite; }
+        .power-button:hover { transform: scale(1.1); }
+        .power-button::before { content: ''; width: 20px; height: 20px; border: 3px solid #fff; border-radius: 50%; border-top-color: transparent; position: absolute; }
+        .power-button::after { content: ''; width: 3px; height: 12px; background: #fff; position: absolute; top: 8px; }
+        @keyframes powerGlow { 0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 0, 0.6), 0 0 40px rgba(255, 0, 0, 0.3); } 50% { box-shadow: 0 0 30px rgba(255, 0, 0, 0.8), 0 0 60px rgba(255, 0, 0, 0.5); } }
 
-        /* ===== NETFLIX PAGE ===== */
-        .nebula-galaxy-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-        .nebula-image { width: 100%; height: 100%; object-fit: cover; }
-        .netflix-header { text-align: center; padding: 40px 20px; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(10px); }
-        .netflix-title { font-size: 3.5rem; margin-bottom: 10px; text-shadow: 0 0 30px rgba(255, 215, 0, 0.5); background: linear-gradient(135deg, #FFD700, #FF6B6B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .netflix-subtitle { font-size: 1.3rem; opacity: 0.9; }
-        .tv-shows-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 40px 20px; max-width: 1400px; margin: 0 auto; }
-        .tv-show-card { background: rgba(0, 0, 0, 0.8); border-radius: 20px; overflow: hidden; width: 400px; cursor: pointer; transition: all 0.3s; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px); }
-        .tv-show-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 25px 60px rgba(255, 215, 0, 0.4); }
-        .show-poster { position: relative; width: 100%; height: 250px; overflow: hidden; }
-        .poster-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-        .tv-show-card:hover .poster-image { transform: scale(1.1); }
-        .play-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 60px; color: #fff; opacity: 0; transition: opacity 0.3s; text-shadow: 0 0 20px rgba(0, 0, 0, 0.8); }
-        .tv-show-card:hover .play-overlay { opacity: 1; }
-        .show-info { padding: 25px; }
-        .show-title { font-size: 1.8rem; margin-bottom: 15px; color: #FFD700; }
-        .show-description { font-size: 1rem; line-height: 1.6; margin-bottom: 20px; opacity: 0.9; }
-        .show-meta { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
-        .meta-item { background: rgba(255, 215, 0, 0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(255, 215, 0, 0.3); }
-        .show-venue { font-size: 0.95rem; color: #aaa; font-style: italic; }
-        .reception-card .show-title { color: #f5576c; }
-        .marriage-card .show-title { color: #4facfe; }
-        .back-btn { display: block; margin: 30px auto; padding: 12px 30px; background: rgba(255, 255, 255, 0.2); border: 2px solid #fff; border-radius: 30px; color: #fff; cursor: pointer; font-size: 1rem; transition: all 0.3s; }
-        .back-btn:hover { background: #fff; color: #000; }
-
-        /* ===== GOLDEN BOARDING PASS PAGE (EXACT MATCH) ===== */
-        .starry-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
-            z-index: -2;
+        /* ===== PAGE 2: NETFLIX STYLE (NEW DESIGN) ===== */
+        .netflix-page {
+            width: 100vw;
+            min-height: 100vh;
+            position: relative;
             overflow: hidden;
+            padding: 80px 20px 40px;
         }
-        
-        .stars {
+
+        /* Purple Nebula Background */
+        .nebula-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(120, 50, 180, 0.8) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(180, 50, 120, 0.6) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(100, 30, 150, 0.7) 0%, transparent 50%),
+                linear-gradient(135deg, #2d1b4e 0%, #4a1f5c 25%, #6b2d6b 50%, #8b3a7a 75%, #3d1f4e 100%);
+            z-index: 0;
         }
-        
-        .star {
+
+        .nebula-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .nebula-star {
             position: absolute;
             background: white;
             border-radius: 50%;
-            animation: twinkle 3s infinite;
+            animation: nebulaTwinkle 4s infinite;
         }
-        
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+
+        @keyframes nebulaTwinkle {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
         }
-        
-        .golden-page-wrapper {
-            min-height: 100vh;
-            padding: 30px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-        }
-        
-        /* Top Navigation Bar */
-        .top-nav {
+
+        /* Top Navigation */
+        .netflix-top-nav {
             position: fixed;
             top: 0;
             left: 0;
@@ -120,8 +100,8 @@
             padding: 20px 30px;
             z-index: 100;
         }
-        
-        .back-button {
+
+        .netflix-back-btn {
             background: #000;
             color: #fff;
             border: none;
@@ -136,13 +116,13 @@
             transition: all 0.3s;
             font-family: 'Montserrat', sans-serif;
         }
-        
-        .back-button:hover {
+
+        .netflix-back-btn:hover {
             background: #333;
             transform: translateX(-3px);
         }
-        
-        .music-toggle-btn {
+
+        .netflix-music-btn {
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -157,295 +137,219 @@
             box-shadow: 0 4px 15px rgba(123, 104, 238, 0.4);
             transition: all 0.3s;
         }
-        
-        .music-toggle-btn:hover {
+
+        .netflix-music-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(123, 104, 238, 0.6);
         }
-        
-        /* Main Boarding Pass Card */
-        .boarding-pass-card {
-            background: #FFFDF5;
-            border: 4px solid #D4AF37;
-            border-radius: 25px;
-            max-width: 600px;
-            width: 100%;
+
+        /* Hero Image Card */
+        .hero-card {
+            position: relative;
+            z-index: 10;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            margin-top: 80px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
-        
-        /* Header Section */
-        .bp-header {
-            background: linear-gradient(135deg, #1a3a6b 0%, #2a4a8b 50%, #1a3a6b 100%);
-            padding: 35px 30px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+
+        .hero-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
         }
-        
-        .bp-header::before {
-            content: '✈';
+
+        .hero-overlay {
             position: absolute;
-            top: 50%;
-            right: 30px;
-            transform: translateY(-50%);
-            font-size: 80px;
-            opacity: 0.08;
-            color: #fff;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(100, 50, 120, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-        
-        .bp-header h1 {
+
+        .hero-heart {
+            font-size: 80px;
+            color: #ff6b7a;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(255, 107, 122, 0.6);
+            animation: heartbeat 2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .hero-names {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: #fff;
             letter-spacing: 3px;
-            margin-bottom: 8px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
         }
-        
-        .bp-header .subtitle {
+
+        /* Main Title Section */
+        .main-title-section {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .main-couple-names {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #ff8fa3;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 10px rgba(255, 143, 163, 0.4);
+        }
+
+        .main-subtitle {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
-            color: #FFD700;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
             letter-spacing: 4px;
-            font-weight: 500;
+            font-weight: 400;
+            text-transform: uppercase;
         }
-        
-        /* Status Section */
-        .status-section {
-            margin: 30px 25px;
-            padding: 25px 20px;
-            border: 2px dashed #D4AF37;
-            border-radius: 15px;
+
+        /* Event Cards Container */
+        .events-container {
+            position: relative;
+            z-index: 10;
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* Glassmorphism Event Card */
+        .event-card-glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
             display: flex;
             align-items: center;
-            justify-content: space-around;
-            background: rgba(212, 175, 55, 0.03);
+            gap: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
-        
-        .status-item {
-            text-align: center;
+
+        .event-card-glass:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .event-icon-box {
+            width: 70px;
+            height: 70px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #ff4444 0%, #ff6b6b 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(255, 68, 68, 0.4);
+        }
+
+        .event-info {
             flex: 1;
         }
-        
-        .status-item .status-label {
+
+        .event-title {
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.8rem;
             font-weight: 700;
-            color: #1a3a6b;
-            margin-bottom: 5px;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 1px;
-        }
-        
-        .status-item .status-sublabel {
-            font-size: 0.75rem;
-            color: #888;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 500;
-        }
-        
-        .status-arrow {
-            font-size: 2.5rem;
-            color: #4a6fa5;
-            padding: 0 15px;
-        }
-        
-        /* Event Cards */
-        .event-section {
-            margin: 0 25px 20px;
-            background: #FFF9E6;
-            border-radius: 15px;
-            padding: 25px;
-            border-left: 4px solid #D4AF37;
-        }
-        
-        .event-section-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #1a3a6b;
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .event-section-title .icon {
-            font-size: 1.5rem;
-        }
-        
-        .event-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-        }
-        
-        .event-row:last-child {
-            border-bottom: none;
-        }
-        
-        .event-row .row-label {
-            font-size: 1rem;
-            color: #555;
-            font-weight: 500;
-        }
-        
-        .event-row .row-value {
-            font-size: 1.05rem;
-            color: #1a3a6b;
-            font-weight: 700;
-            text-align: right;
-        }
-        
-        /* Venue Section */
-        .venue-section {
-            margin: 0 25px 20px;
-            background: #FFF9E6;
-            border-radius: 15px;
-            padding: 25px;
-            border-left: 4px solid #D4AF37;
-        }
-        
-        .venue-section-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #1a3a6b;
-            margin-bottom: 15px;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .venue-item {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-        }
-        
-        .venue-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        
-        .venue-item .venue-name {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #1a3a6b;
-            margin-bottom: 5px;
-        }
-        
-        .venue-item .venue-address {
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.5;
-        }
-        
-        /* QR Code Section */
-        .qr-section {
-            margin: 0 25px 20px;
-            background: #FFF9E6;
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            border-left: 4px solid #D4AF37;
-        }
-        
-        .qr-section-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #1a3a6b;
-            margin-bottom: 15px;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        #qrcode {
-            display: inline-block;
-            padding: 15px;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .qr-text {
-            margin-top: 12px;
-            font-size: 0.85rem;
-            color: #666;
-        }
-        
-        /* Map Section */
-        .map-section {
-            margin: 0 25px 20px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .map-section iframe {
-            width: 100%;
-            height: 250px;
-            border: 0;
-            display: block;
-        }
-        
-        /* Countdown Section */
-        .countdown-section {
-            margin: 0 25px 30px;
-            background: #FFF9E6;
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            border-left: 4px solid #D4AF37;
-        }
-        
-        .countdown-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #1a3a6b;
-            margin-bottom: 20px;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .countdown-timer {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .countdown-box {
-            background: #1a3a6b;
             color: #fff;
-            padding: 15px 20px;
-            border-radius: 12px;
-            min-width: 70px;
+            margin-bottom: 8px;
         }
-        
-        .countdown-box .number {
-            display: block;
-            font-size: 2rem;
-            font-weight: 700;
-            line-height: 1;
+
+        .event-datetime {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
         }
-        
-        .countdown-box .unit {
-            display: block;
-            font-size: 0.7rem;
-            margin-top: 5px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            opacity: 0.8;
-        }
-        
+
+        /* ===== PAGE 3: GOLDEN BOARDING PASS ===== */
+        .starry-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); z-index: -2; overflow: hidden; }
+        .stars-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        .golden-page-wrapper { min-height: 100vh; padding: 30px 20px; display: flex; flex-direction: column; align-items: center; position: relative; }
+        .top-nav { position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 20px 30px; z-index: 100; }
+        .back-button { background: #000; color: #fff; border: none; padding: 12px 24px; border-radius: 30px; font-size: 1rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.3s; font-family: 'Montserrat', sans-serif; }
+        .back-button:hover { background: #333; transform: translateX(-3px); }
+        .music-toggle-btn { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #7B68EE, #9370DB); border: none; color: #fff; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(123, 104, 238, 0.4); transition: all 0.3s; }
+        .music-toggle-btn:hover { transform: scale(1.1); }
+        .boarding-pass-card { background: #FFFDF5; border: 4px solid #D4AF37; border-radius: 25px; max-width: 600px; width: 100%; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); margin-top: 80px; }
+        .bp-header { background: linear-gradient(135deg, #1a3a6b 0%, #2a4a8b 50%, #1a3a6b 100%); padding: 35px 30px; text-align: center; position: relative; overflow: hidden; }
+        .bp-header::before { content: '✈'; position: absolute; top: 50%; right: 30px; transform: translateY(-50%); font-size: 80px; opacity: 0.08; color: #fff; }
+        .bp-header h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 700; color: #fff; letter-spacing: 3px; margin-bottom: 8px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); }
+        .bp-header .subtitle { font-family: 'Montserrat', sans-serif; font-size: 0.95rem; color: #FFD700; letter-spacing: 4px; font-weight: 500; }
+        .status-section { margin: 30px 25px; padding: 25px 20px; border: 2px dashed #D4AF37; border-radius: 15px; display: flex; align-items: center; justify-content: space-around; background: rgba(212, 175, 55, 0.03); }
+        .status-item { text-align: center; flex: 1; }
+        .status-item .status-label { font-size: 1.8rem; font-weight: 700; color: #1a3a6b; margin-bottom: 5px; font-family: 'Montserrat', sans-serif; letter-spacing: 1px; }
+        .status-item .status-sublabel { font-size: 0.75rem; color: #888; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
+        .status-arrow { font-size: 2.5rem; color: #4a6fa5; padding: 0 15px; }
+        .event-section { margin: 0 25px 20px; background: #FFF9E6; border-radius: 15px; padding: 25px; border-left: 4px solid #D4AF37; }
+        .event-section-title { font-size: 1.4rem; font-weight: 700; color: #1a3a6b; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; font-family: 'Montserrat', sans-serif; }
+        .event-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
+        .event-row:last-child { border-bottom: none; }
+        .event-row .row-label { font-size: 1rem; color: #555; font-weight: 500; }
+        .event-row .row-value { font-size: 1.05rem; color: #1a3a6b; font-weight: 700; text-align: right; }
+        .venue-section { margin: 0 25px 20px; background: #FFF9E6; border-radius: 15px; padding: 25px; border-left: 4px solid #D4AF37; }
+        .venue-section-title { font-size: 1.2rem; font-weight: 700; color: #1a3a6b; margin-bottom: 15px; font-family: 'Montserrat', sans-serif; }
+        .venue-item { margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
+        .venue-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .venue-item .venue-name { font-size: 1rem; font-weight: 700; color: #1a3a6b; margin-bottom: 5px; }
+        .venue-item .venue-address { font-size: 0.9rem; color: #666; line-height: 1.5; }
+        .qr-section { margin: 0 25px 20px; background: #FFF9E6; border-radius: 15px; padding: 25px; text-align: center; border-left: 4px solid #D4AF37; }
+        .qr-section-title { font-size: 1.1rem; font-weight: 700; color: #1a3a6b; margin-bottom: 15px; font-family: 'Montserrat', sans-serif; }
+        #qrcode { display: inline-block; padding: 15px; background: #fff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+        .qr-text { margin-top: 12px; font-size: 0.85rem; color: #666; }
+        .map-section { margin: 0 25px 20px; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }
+        .map-section iframe { width: 100%; height: 250px; border: 0; display: block; }
+        .countdown-section { margin: 0 25px 30px; background: #FFF9E6; border-radius: 15px; padding: 25px; text-align: center; border-left: 4px solid #D4AF37; }
+        .countdown-title { font-size: 1.1rem; font-weight: 700; color: #1a3a6b; margin-bottom: 20px; font-family: 'Montserrat', sans-serif; }
+        .countdown-timer { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .countdown-box { background: #1a3a6b; color: #fff; padding: 15px 20px; border-radius: 12px; min-width: 70px; }
+        .countdown-box .number { display: block; font-size: 2rem; font-weight: 700; line-height: 1; }
+        .countdown-box .unit { display: block; font-size: 0.7rem; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; opacity: 0.8; }
+
         /* Responsive */
         @media (max-width: 768px) {
-            .couple-names { font-size: 2.5rem; }
-            .tv-screen { height: 60vh; border-width: 8px; }
-            .date-enter-container { flex-direction: column; }
-            .tv-show-card { width: 100%; max-width: 400px; }
+            .samsung-tv { width: 95%; padding: 10px; }
+            .tv-couple-names { font-size: 2rem; letter-spacing: 3px; }
+            .tv-tagline { font-size: 1.3rem; }
+            .power-button { width: 40px; height: 40px; }
+            .samsung-logo { font-size: 0.8rem; }
+            
+            .hero-card { margin-bottom: 30px; }
+            .hero-image { height: 250px; }
+            .hero-heart { font-size: 60px; }
+            .hero-names { font-size: 1.8rem; }
+            .main-couple-names { font-size: 2rem; }
+            .main-subtitle { font-size: 0.9rem; letter-spacing: 2px; }
+            .event-card-glass { padding: 20px; gap: 15px; }
+            .event-icon-box { width: 60px; height: 60px; font-size: 28px; }
+            .event-title { font-size: 1.4rem; }
+            .event-datetime { font-size: 0.9rem; }
             
             .bp-header h1 { font-size: 2rem; }
             .bp-header .subtitle { font-size: 0.8rem; letter-spacing: 2px; }
@@ -462,108 +366,104 @@
         <source src="bg-music.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- ================= PAGE 1: TV LANDING ================= -->
+    <!-- ================= PAGE 1: SAMSUNG TV LANDING ================= -->
     <div id="page-tv" class="page-section">
-        <div class="tv-frame">
-            <div class="tv-screen">
-                <div class="galaxy-bg-off" id="galaxyOff">
-                    <img src="https://images.unsplash.com/photo-1506318137071-a8bcbf6755dd?q=80&w=2070&auto=format&fit=crop" alt="Galaxy Night Sky" class="galaxy-image">
-                </div>
-                <div class="couple-content hidden" id="coupleContent">
-                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=2070&auto=format&fit=crop" alt="Couple Walking on Beach" class="couple-image">
-                    <div class="names-overlay fade-in">
-                        <h1 class="couple-names">
-                            <span class="groom">Aswin Sakthivel</span>
-                            <span class="ampersand">&</span>
-                            <span class="bride">Harinni</span>
-                        </h1>
-                        <p class="tagline">Together with their families</p>
-                        <p class="invitation-text">Invite you to celebrate their wedding</p>
-                        <div class="date-enter-container">
-                            <div class="date-box"><span class="date-text">Nov 19-20, 2026</span></div>
-                            <button class="enter-btn" onclick="navigateTo('page-netflix')">Enter Our World ✨</button>
-                        </div>
+        <div class="tv-landing-page">
+            <div class="starry-background">
+                <div class="stars-layer" id="starsLayer1"></div>
+                <div class="stars-layer" id="starsLayer2"></div>
+            </div>
+            <div class="shooting-star" style="top: 20%; left: 30%; animation-delay: 0s;"></div>
+            <div class="shooting-star" style="top: 40%; left: 60%; animation-delay: 2s;"></div>
+            <div class="shooting-star" style="top: 15%; left: 80%; animation-delay: 4s;"></div>
+
+            <div class="samsung-tv">
+                <div class="tv-screen-container">
+                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=2070&auto=format&fit=crop" alt="Couple on Beach" class="tv-screen-image">
+                    <div class="tv-screen-overlay">
+                        <h1 class="tv-couple-names">ASWIN & HARINNI</h1>
+                        <p class="tv-tagline">Our Story Begins...</p>
                     </div>
                 </div>
-                <div class="scanlines"></div>
-                <div class="power-button" id="powerBtn">
-                    <div class="power-icon">⏻</div>
-                    <p>Click to Turn On</p>
+                <div class="tv-bottom-bar">
+                    <div class="samsung-logo">SAMSUNG</div>
+                    <div class="tv-speaker"></div>
+                    <div class="power-button-container">
+                        <button class="power-button" id="powerBtn" title="Click to Enter"></button>
+                    </div>
                 </div>
             </div>
-            <div class="tv-stand"></div>
         </div>
     </div>
 
-    <!-- ================= PAGE 2: NETFLIX STYLE ================= -->
+    <!-- ================= PAGE 2: NETFLIX STYLE (NEW DESIGN) ================= -->
     <div id="page-netflix" class="page-section hidden">
-        <div class="nebula-galaxy-bg">
-            <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2070&auto=format&fit=crop" alt="Nebula Galaxy" class="nebula-image">
-        </div>
-        <div class="netflix-header">
-            <h1 class="netflix-title">Our Love Story</h1>
-            <p class="netflix-subtitle">A Journey of Two Hearts Becoming One</p>
-        </div>
-        <div class="tv-shows-container">
-            <div class="tv-show-card reception-card" onclick="navigateTo('page-golden')">
-                <div class="show-poster">
-                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=2070&auto=format&fit=crop" alt="Ring Exchange" class="poster-image">
-                    <div class="play-overlay">▶</div>
-                </div>
-                <div class="show-info">
-                    <h2 class="show-title">Reception Ceremony</h2>
-                    <p class="show-description">Join us as we celebrate our union with family and friends in an evening of joy, laughter, and memories.</p>
-                    <div class="show-meta">
-                        <span class="meta-item">📅 Nov 19, 2026</span>
-                        <span class="meta-item">🕖 7:00 PM</span>
-                        <span class="meta-item">⭐ VIP Event</span>
-                    </div>
-                    <div class="show-venue">📍 Muneeswarar Temple Annadhana Mandapam</div>
+        <div class="netflix-page">
+            <!-- Purple Nebula Background -->
+            <div class="nebula-bg"></div>
+            <div class="nebula-stars" id="nebulaStars"></div>
+
+            <!-- Top Navigation -->
+            <div class="netflix-top-nav">
+                <button class="netflix-back-btn" onclick="navigateTo('page-tv')">← Back</button>
+                <button class="netflix-music-btn" id="netflixMusicBtn">🎵</button>
+            </div>
+
+            <!-- Hero Image Card -->
+            <div class="hero-card fade-in">
+                <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=2070&auto=format&fit=crop" alt="Couple Hands with Rings" class="hero-image">
+                <div class="hero-overlay">
+                    <div class="hero-heart">❤️</div>
+                    <h2 class="hero-names">ASWIN & HARINNI</h2>
                 </div>
             </div>
-            <div class="tv-show-card marriage-card" onclick="navigateTo('page-golden')">
-                <div class="show-poster">
-                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=2070&auto=format&fit=crop" alt="Ring Exchange" class="poster-image">
-                    <div class="play-overlay">▶</div>
-                </div>
-                <div class="show-info">
-                    <h2 class="show-title">Wedding Ceremony</h2>
-                    <p class="show-description">Witness the sacred moment when two souls unite forever in the presence of divine blessings.</p>
-                    <div class="show-meta">
-                        <span class="meta-item">📅 Nov 20, 2026</span>
-                        <span class="meta-item">🌅 4:30 AM - 6:00 AM</span>
-                        <span class="meta-item">💍 Muhurtham</span>
+
+            <!-- Main Title Section -->
+            <div class="main-title-section fade-in">
+                <h1 class="main-couple-names">ASWIN SAKTHIVEL & HARINNI</h1>
+                <p class="main-subtitle">A LOVE STORY WRITTEN IN THE STARS ✨</p>
+            </div>
+
+            <!-- Event Cards -->
+            <div class="events-container">
+                <!-- Reception Card -->
+                <div class="event-card-glass" onclick="navigateTo('page-golden')">
+                    <div class="event-icon-box">🥂</div>
+                    <div class="event-info">
+                        <h3 class="event-title">Reception</h3>
+                        <p class="event-datetime">Nov 19, 2026 | 7:00 PM Onwards</p>
                     </div>
-                    <div class="show-venue">📍 Sri Angala Eshwari Temple</div>
+                </div>
+
+                <!-- Marriage Card -->
+                <div class="event-card-glass" onclick="navigateTo('page-golden')">
+                    <div class="event-icon-box">💍</div>
+                    <div class="event-info">
+                        <h3 class="event-title">Marriage</h3>
+                        <p class="event-datetime">Nov 20, 2026 | 4:30 AM - 6:00 AM</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <button class="back-btn" onclick="navigateTo('page-tv')">← Back to Home</button>
     </div>
 
-    <!-- ================= PAGE 3: GOLDEN BOARDING PASS (EXACT MATCH) ================= -->
+    <!-- ================= PAGE 3: GOLDEN BOARDING PASS ================= -->
     <div id="page-golden" class="page-section hidden">
-        <!-- Starry Background -->
         <div class="starry-bg"></div>
-        <div class="stars" id="starsContainer"></div>
+        <div class="stars-container" id="starsContainer"></div>
         
-        <!-- Top Navigation -->
         <div class="top-nav">
             <button class="back-button" onclick="navigateTo('page-netflix')">← Back</button>
             <button class="music-toggle-btn" id="musicToggleBtn">🎵</button>
         </div>
         
         <div class="golden-page-wrapper fade-in">
-            <!-- Main Boarding Pass Card -->
             <div class="boarding-pass-card">
-                
-                <!-- Header -->
                 <div class="bp-header">
                     <h1>ASWIN & HARINNI</h1>
                     <div class="subtitle">✨ GOLDEN BOARDING PASS ✨</div>
                 </div>
                 
-                <!-- Status Section -->
                 <div class="status-section">
                     <div class="status-item">
                         <div class="status-label">SINGLE</div>
@@ -576,11 +476,8 @@
                     </div>
                 </div>
                 
-                <!-- Reception Section -->
                 <div class="event-section">
-                    <div class="event-section-title">
-                        <span class="icon">🦉</span> Reception
-                    </div>
+                    <div class="event-section-title">🥂 Reception</div>
                     <div class="event-row">
                         <span class="row-label">Date</span>
                         <span class="row-value">Nov 19, 2026</span>
@@ -591,11 +488,8 @@
                     </div>
                 </div>
                 
-                <!-- Marriage Section -->
                 <div class="event-section">
-                    <div class="event-section-title">
-                        <span class="icon"></span> Marriage
-                    </div>
+                    <div class="event-section-title"> Marriage</div>
                     <div class="event-row">
                         <span class="row-label">Date</span>
                         <span class="row-value">Nov 20, 2026</span>
@@ -606,7 +500,6 @@
                     </div>
                 </div>
                 
-                <!-- Venue Section -->
                 <div class="venue-section">
                     <div class="venue-section-title">Venue</div>
                     <div class="venue-item">
@@ -614,26 +507,23 @@
                         <div class="venue-address">653C+3FC, PT Murthy Nagar, Attanthangal, Tamil Nadu 600052</div>
                     </div>
                     <div class="venue-item">
-                        <div class="venue-name">💍 Sri Angala Eshwari Temple</div>
+                        <div class="venue-name">🛕 Sri Angala Eshwari Temple</div>
                         <div class="venue-address">அருள்மிகு அங்காள பரமேஸ்வரி அம்மன் திருக்கோவில், 1/1572, Munusamy Pillai St, PT Murthy Nagar, Red Hills, Padiyanallur, Tamil Nadu 600052</div>
                     </div>
                 </div>
                 
-                <!-- QR Code Section -->
                 <div class="qr-section">
-                    <div class="qr-section-title"> Scan for Location</div>
+                    <div class="qr-section-title">📍 Scan for Location</div>
                     <div id="qrcode"></div>
                     <div class="qr-text">Scan to view venue on Google Maps</div>
                 </div>
                 
-                <!-- Map Section -->
                 <div class="map-section">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3880.1234567890123!2d80.12345678901234!3d13.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDA3JzI0LjQiTiA4MMKwMDcnMjQuNCJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
                 </div>
                 
-                <!-- Countdown Section -->
                 <div class="countdown-section">
-                    <div class="countdown-title"> Countdown to Our Big Day</div>
+                    <div class="countdown-title">⏰ Countdown to Our Big Day</div>
                     <div class="countdown-timer" id="countdownTimer">
                         <div class="countdown-box">
                             <span class="number days">00</span>
@@ -653,7 +543,6 @@
                         </div>
                     </div>
                 </div>
-                
             </div>
         </div>
     </div>
@@ -675,30 +564,46 @@
 
         // TV Power Button Logic
         const powerBtn = document.getElementById('powerBtn');
-        const galaxyOff = document.getElementById('galaxyOff');
-        const coupleContent = document.getElementById('coupleContent');
         const bgMusic = document.getElementById('bgMusic');
         let isPlaying = false;
 
         powerBtn.addEventListener('click', () => {
-            powerBtn.style.display = 'none';
-            galaxyOff.classList.add('hidden');
-            coupleContent.classList.remove('hidden');
-            
             bgMusic.volume = 0.3;
             bgMusic.play().catch(e => console.log('Auto-play prevented:', e));
             isPlaying = true;
-            updateMusicIcon();
+            updateMusicIcons();
+            
+            setTimeout(() => {
+                navigateTo('page-netflix');
+            }, 500);
         });
 
-        // Music Toggle (Top Right Button)
-        function updateMusicIcon() {
-            const btn = document.getElementById('musicToggleBtn');
-            if(btn) btn.textContent = isPlaying ? '🎵' : '🔇';
+        // Music Toggle Functions
+        function updateMusicIcons() {
+            const btn1 = document.getElementById('netflixMusicBtn');
+            const btn2 = document.getElementById('musicToggleBtn');
+            const icon = isPlaying ? '🎵' : '🔇';
+            if(btn1) btn1.textContent = icon;
+            if(btn2) btn2.textContent = icon;
         }
         
         document.addEventListener('DOMContentLoaded', () => {
+            const netflixMusicBtn = document.getElementById('netflixMusicBtn');
             const musicToggleBtn = document.getElementById('musicToggleBtn');
+            
+            if(netflixMusicBtn) {
+                netflixMusicBtn.addEventListener('click', () => {
+                    if (isPlaying) {
+                        bgMusic.pause();
+                        isPlaying = false;
+                    } else {
+                        bgMusic.play();
+                        isPlaying = true;
+                    }
+                    updateMusicIcons();
+                });
+            }
+            
             if(musicToggleBtn) {
                 musicToggleBtn.addEventListener('click', () => {
                     if (isPlaying) {
@@ -708,17 +613,68 @@
                         bgMusic.play();
                         isPlaying = true;
                     }
-                    updateMusicIcon();
+                    updateMusicIcons();
                 });
             }
         });
 
-        // Generate Stars for Background
-        function generateStars() {
-            const container = document.getElementById('starsContainer');
-            const starCount = 200;
+        // Generate Stars for TV Background
+        function generateTVStars() {
+            const layer1 = document.getElementById('starsLayer1');
+            const layer2 = document.getElementById('starsLayer2');
             
-            for (let i = 0; i < starCount; i++) {
+            for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 2 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                layer1.appendChild(star);
+            }
+            
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 1.5 + 0.5;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (Math.random() * 4 + 3) + 's';
+                layer2.appendChild(star);
+            }
+        }
+
+        // Generate Stars for Netflix Nebula Background
+        function generateNebulaStars() {
+            const container = document.getElementById('nebulaStars');
+            if (!container) return;
+            
+            for (let i = 0; i < 300; i++) {
+                const star = document.createElement('div');
+                star.className = 'nebula-star';
+                const size = Math.random() * 3 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 4 + 's';
+                star.style.animationDuration = (Math.random() * 4 + 3) + 's';
+                container.appendChild(star);
+            }
+        }
+
+        // Generate Stars for Golden Pass Background
+        function generateGoldenStars() {
+            const container = document.getElementById('starsContainer');
+            if (!container) return;
+            
+            for (let i = 0; i < 200; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 const size = Math.random() * 2 + 1;
@@ -758,7 +714,7 @@
                 
                 if (distance < 0) {
                     clearInterval(countdownInterval);
-                    document.getElementById('countdownTimer').innerHTML = '<h2 style="color:#1a3a6b;">🎉 The Big Day is Here! 🎉</h2>';
+                    document.getElementById('countdownTimer').innerHTML = '<h2 style="color:#1a3a6b;"> The Big Day is Here! 🎉</h2>';
                     return;
                 }
                 
@@ -781,7 +737,9 @@
 
         // Initialize
         window.addEventListener('load', () => {
-            generateStars();
+            generateTVStars();
+            generateNebulaStars();
+            generateGoldenStars();
             generateQRCode();
             startCountdown();
         });
