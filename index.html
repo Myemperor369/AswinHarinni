@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aswin & Harinni - Cosmic Galaxy Wedding</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&family=Cormorant+Garamond:wght@600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <!-- FANCY COSMIC FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Great+Vibes&family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     
     <style>
@@ -16,18 +17,24 @@
             --neon-blue: #00d4ff;
             --glass: rgba(20, 10, 40, 0.4);
             --border: rgba(255, 255, 255, 0.15);
+            
+            /* Font Variables */
+            --font-heading: 'Cinzel Decorative', serif; /* Royal & Magical */
+            --font-cursive: 'Great Vibes', cursive;     /* Elegant Script */
+            --font-sub: 'Cormorant Garamond', serif;    /* Classic Serif */
+            --font-body: 'Montserrat', sans-serif;      /* Clean Body */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: 'Montserrat', sans-serif; 
+            font-family: var(--font-body); 
             background: var(--deep-space); 
             color: #fff; 
             overflow-x: hidden; 
             perspective: 1000px;
         }
 
-        /* ===== REALISTIC GALAXY CANVAS ===== */
+        /* ===== REALISTIC GALAXY CANVAS (1000+ STARS) ===== */
         #galaxy-canvas {
             position: fixed;
             top: 0;
@@ -35,7 +42,8 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: radial-gradient(ellipse at bottom, #0b0d17 0%, #000000 100%);
+            /* Milky Way Background Gradient */
+            background: radial-gradient(ellipse at 50% 50%, #1a0b2e 0%, #0b0d17 40%, #000000 100%);
         }
 
         .hidden { display: none !important; opacity: 0; }
@@ -59,52 +67,41 @@
             background: #050505;
             border-radius: 20px;
             padding: 15px;
-            box-shadow: 
-                0 0 0 1px #222,
-                0 0 0 4px #111,
-                0 50px 100px rgba(0,0,0,0.9),
-                inset 0 0 40px rgba(0,0,0,0.8);
+            box-shadow: 0 0 0 1px #222, 0 0 0 4px #111, 0 50px 100px rgba(0,0,0,0.9), inset 0 0 40px rgba(0,0,0,0.8);
             position: relative;
             transform-style: preserve-3d;
             transition: transform 0.1s;
         }
 
         .screen-bezel {
-            background: #000;
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-            aspect-ratio: 16/9;
+            background: #000; border-radius: 8px; overflow: hidden; position: relative; aspect-ratio: 16/9;
             box-shadow: inset 0 0 20px rgba(255,255,255,0.05);
         }
 
         .screen-content {
-            width: 100%; height: 100%;
-            object-fit: cover;
+            width: 100%; height: 100%; object-fit: cover;
             filter: brightness(0.85) contrast(1.1) saturate(1.2);
             animation: slowPan 30s infinite alternate;
         }
         @keyframes slowPan { from { transform: scale(1); } to { transform: scale(1.1); } }
 
         .screen-overlay {
-            position: absolute; bottom: 0; left: 0; width: 100%;
-            height: 70%;
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 70%;
             background: linear-gradient(to top, #000 10%, transparent 100%);
-            display: flex; flex-direction: column;
-            justify-content: flex-end; align-items: center;
+            display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
             padding-bottom: 50px;
         }
 
         .tv-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 5rem; color: #fff;
+            font-family: var(--font-heading); /* FANCY FONT */
+            font-size: 4.5rem; color: #fff;
             text-shadow: 0 0 30px rgba(255,255,255,0.6), 0 0 10px rgba(255,255,255,0.8);
-            letter-spacing: 6px; margin-bottom: 10px;
+            letter-spacing: 6px; margin-bottom: 10px; text-align: center;
         }
 
         .tv-sub {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem; color: var(--gold);
+            font-family: var(--font-cursive); /* FANCY CURSIVE */
+            font-size: 3.5rem; color: var(--gold);
             text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
         }
 
@@ -112,13 +109,10 @@
             position: absolute; bottom: -30px; right: 50px;
             width: 55px; height: 55px;
             background: radial-gradient(circle, #ff3333, #990000);
-            border-radius: 50%;
-            border: 2px solid #444;
-            cursor: pointer;
+            border-radius: 50%; border: 2px solid #444; cursor: pointer;
             box-shadow: 0 0 20px #ff0000, inset 0 0 10px rgba(0,0,0,0.5);
             display: flex; align-items: center; justify-content: center;
-            animation: pulseBtn 2s infinite;
-            z-index: 20;
+            animation: pulseBtn 2s infinite; z-index: 20;
         }
         .power-icon { width: 20px; height: 20px; border: 3px solid #fff; border-radius: 50%; border-top-color: transparent; position: relative; }
         .power-icon::after { content:''; position: absolute; top: -5px; left: 50%; transform: translateX(-50%); width: 3px; height: 8px; background: #fff; }
@@ -126,91 +120,66 @@
 
         /* ===== PAGE 2: GALAXY NETFLIX ===== */
         .cosmic-nav {
-            position: fixed; top: 0; width: 100%;
-            padding: 20px 40px;
-            display: flex; justify-content: space-between;
-            z-index: 100;
+            position: fixed; top: 0; width: 100%; padding: 20px 40px;
+            display: flex; justify-content: space-between; z-index: 100;
             background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
             backdrop-filter: blur(10px);
         }
         .nav-btn {
             background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2);
             color: #fff; padding: 10px 25px; border-radius: 30px;
-            cursor: pointer; transition: 0.3s; font-weight: 600;
-            backdrop-filter: blur(5px);
+            cursor: pointer; transition: 0.3s; font-weight: 600; backdrop-filter: blur(5px);
         }
         .nav-btn:hover { background: rgba(255,255,255,0.2); border-color: #fff; }
 
         .hero-banner {
-            position: relative; width: 90%; max-width: 800px;
-            margin: 100px auto 50px;
-            border-radius: 20px;
-            overflow: hidden;
+            position: relative; width: 90%; max-width: 800px; margin: 100px auto 50px;
+            border-radius: 20px; overflow: hidden;
             box-shadow: 0 0 60px rgba(176, 38, 255, 0.4), 0 0 20px rgba(0, 212, 255, 0.2);
-            border: 1px solid rgba(255,255,255,0.1);
-            transform-style: preserve-3d;
-            transition: transform 0.1s;
+            border: 1px solid rgba(255,255,255,0.1); transform-style: preserve-3d; transition: transform 0.1s;
         }
         .hero-img { width: 100%; height: 450px; object-fit: cover; }
         .hero-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(to top, #000 30%, transparent);
-            display: flex; flex-direction: column;
-            justify-content: flex-end; align-items: center;
-            padding-bottom: 40px;
+            position: absolute; inset: 0; background: linear-gradient(to top, #000 30%, transparent);
+            display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding-bottom: 40px;
         }
         .heart-anim { font-size: 70px; filter: drop-shadow(0 0 25px #ff0055); animation: beat 1.5s infinite; }
         @keyframes beat { 0%,100% { transform: scale(1); } 50% { transform: scale(1.15); } }
         
         .main-headings { text-align: center; margin-bottom: 60px; position: relative; z-index: 10; }
         .couple-name-big {
-            font-family: 'Playfair Display', serif;
-            font-size: 4.5rem; line-height: 1.1;
+            font-family: var(--font-heading); /* FANCY FONT */
+            font-size: 4rem; line-height: 1.2;
             background: linear-gradient(to right, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-shadow: 0 10px 30px rgba(161, 140, 209, 0.3);
-            margin-bottom: 15px;
+            text-shadow: 0 10px 30px rgba(161, 140, 209, 0.3); margin-bottom: 15px;
         }
         .tagline-space {
-            font-size: 1.1rem; letter-spacing: 6px; color: rgba(255,255,255,0.8);
-            text-transform: uppercase; font-weight: 300;
+            font-family: var(--font-cursive); /* FANCY CURSIVE */
+            font-size: 2.5rem; color: rgba(255,255,255,0.9); letter-spacing: 2px;
         }
 
         .event-cards {
             display: flex; flex-direction: column; gap: 30px;
-            max-width: 800px; margin: 0 auto 100px; padding: 0 20px;
-            position: relative; z-index: 10;
+            max-width: 800px; margin: 0 auto 100px; padding: 0 20px; position: relative; z-index: 10;
         }
 
         .card-glass {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 30px;
-            display: flex; align-items: center; gap: 30px;
-            cursor: pointer;
-            transition: all 0.4s;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-            transform-style: preserve-3d;
-            position: relative; overflow: hidden;
+            background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--border);
+            border-radius: 20px; padding: 30px; display: flex; align-items: center; gap: 30px;
+            cursor: pointer; transition: all 0.4s; box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            transform-style: preserve-3d; position: relative; overflow: hidden;
         }
         .card-glass:hover {
-            transform: translateY(-5px) scale(1.02);
-            background: rgba(40, 20, 80, 0.6);
-            border-color: rgba(176, 38, 255, 0.5);
-            box-shadow: 0 20px 60px rgba(176, 38, 255, 0.3);
+            transform: translateY(-5px) scale(1.02); background: rgba(40, 20, 80, 0.6);
+            border-color: rgba(176, 38, 255, 0.5); box-shadow: 0 20px 60px rgba(176, 38, 255, 0.3);
         }
         .card-icon {
-            width: 70px; height: 70px;
-            background: linear-gradient(135deg, #ff00cc, #333399);
-            border-radius: 15px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 32px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-            flex-shrink: 0;
+            width: 70px; height: 70px; background: linear-gradient(135deg, #ff00cc, #333399);
+            border-radius: 15px; display: flex; align-items: center; justify-content: center;
+            font-size: 32px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); flex-shrink: 0;
         }
-        .card-info h3 { font-size: 2rem; margin-bottom: 5px; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .card-info h3 { font-family: var(--font-sub); font-size: 2rem; margin-bottom: 5px; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         .card-info p { color: rgba(255,255,255,0.7); font-size: 1.1rem; }
 
         /* Visualizer Bars */
@@ -224,80 +193,36 @@
         .v-bar:nth-child(odd) { background: var(--neon-blue); animation-duration: 0.7s; box-shadow: 0 0 10px var(--neon-blue); }
         @keyframes vibrate { 0%,100% { height: 10%; } 50% { height: 100%; } }
 
-        /* ===== PAGE 3: GOLDEN PASS - BOLD DARK GOLDEN OUTLINE ===== */
+        /* ===== PAGE 3: GOLDEN PASS - BOLD & CENTERED ===== */
         .pass-page {
-            min-height: 100vh;
-            display: flex; flex-direction: column; align-items: center;
-            padding: 100px 20px 40px;
-            position: relative; z-index: 10;
+            min-height: 100vh; display: flex; flex-direction: column; align-items: center;
+            padding: 100px 20px 40px; position: relative; z-index: 10;
         }
         
-        /* ULTRA VISIBLE DARK GOLDEN METALLIC FRAME */
         .golden-card {
             background: linear-gradient(135deg, #fffdf5 0%, #fff9e6 100%);
-            border-radius: 20px;
-            width: 100%; max-width: 600px;
-            position: relative;
-            /* BOLD Multi-layered Dark Gold Outline - VERY VISIBLE */
+            border-radius: 20px; width: 100%; max-width: 600px; position: relative;
             border: 8px solid transparent;
             border-image: linear-gradient(135deg, #B8860B 0%, #FFD700 25%, #DAA520 50%, #FFD700 75%, #B8860B 100%) 1;
-            box-shadow: 
-                0 0 0 4px #8B6508,           /* Deep dark gold outer ring */
-                0 0 0 8px #B8860B,           /* Dark goldenrod ring */
-                0 0 30px rgba(184, 134, 11, 0.8),  /* Strong golden glow */
-                0 0 60px rgba(184, 134, 11, 0.5),  /* Extended glow */
-                0 20px 60px rgba(0,0,0,0.9);       /* Deep shadow */
-            overflow: hidden;
-            animation: goldenPulse 3s infinite ease-in-out;
+            box-shadow: 0 0 0 4px #8B6508, 0 0 0 8px #B8860B, 0 0 30px rgba(184, 134, 11, 0.8), 0 0 60px rgba(184, 134, 11, 0.5), 0 20px 60px rgba(0,0,0,0.9);
+            overflow: hidden; animation: goldenPulse 3s infinite ease-in-out;
         }
 
         @keyframes goldenPulse {
-            0%, 100% { 
-                box-shadow: 
-                    0 0 0 4px #8B6508,
-                    0 0 0 8px #B8860B,
-                    0 0 30px rgba(184, 134, 11, 0.8),
-                    0 0 60px rgba(184, 134, 11, 0.5),
-                    0 20px 60px rgba(0,0,0,0.9);
-            }
-            50% { 
-                box-shadow: 
-                    0 0 0 4px #DAA520,
-                    0 0 0 8px #FFD700,
-                    0 0 50px rgba(255, 215, 0, 1),
-                    0 0 80px rgba(255, 215, 0, 0.7),
-                    0 20px 60px rgba(0,0,0,0.9);
-            }
+            0%, 100% { box-shadow: 0 0 0 4px #8B6508, 0 0 0 8px #B8860B, 0 0 30px rgba(184, 134, 11, 0.8), 0 0 60px rgba(184, 134, 11, 0.5), 0 20px 60px rgba(0,0,0,0.9); }
+            50% { box-shadow: 0 0 0 4px #DAA520, 0 0 0 8px #FFD700, 0 0 50px rgba(255, 215, 0, 1), 0 0 80px rgba(255, 215, 0, 0.7), 0 20px 60px rgba(0,0,0,0.9); }
         }
 
-        /* Decorative corners */
-        .golden-card::before {
-            content: '✦';
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            font-size: 30px;
-            color: #B8860B;
-            text-shadow: 0 0 10px rgba(184, 134, 11, 0.8);
-            z-index: 10;
-        }
-        .golden-card::after {
-            content: '✦';
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
-            font-size: 30px;
-            color: #B8860B;
-            text-shadow: 0 0 10px rgba(184, 134, 11, 0.8);
-            z-index: 10;
-        }
+        .golden-card::before { content: '✦'; position: absolute; top: 15px; left: 15px; font-size: 30px; color: #B8860B; text-shadow: 0 0 10px rgba(184, 134, 11, 0.8); z-index: 10; }
+        .golden-card::after { content: ''; position: absolute; bottom: 15px; right: 15px; font-size: 30px; color: #B8860B; text-shadow: 0 0 10px rgba(184, 134, 11, 0.8); z-index: 10; }
 
         .gp-header {
-            background: linear-gradient(135deg, #1a3a6b, #0f172a);
-            padding: 30px; text-align: center;
-            border-bottom: 4px solid #B8860B;
+            background: linear-gradient(135deg, #1a3a6b, #0f172a); padding: 30px; text-align: center; border-bottom: 4px solid #B8860B;
         }
-        .gp-header h1 { color: #FFD700; font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; margin-bottom: 5px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .gp-header h1 { 
+            font-family: var(--font-heading); /* FANCY FONT */
+            color: #FFD700; font-size: 2.5rem; margin-bottom: 5px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); 
+        }
         .gp-body { padding: 30px; color: #333; }
         .status-strip {
             display: flex; justify-content: space-between; align-items: center;
@@ -306,14 +231,48 @@
         }
         .detail-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #ddd; }
         .detail-item:last-child { border-bottom: none; }
-        .qr-area { text-align: center; margin-top: 20px; padding: 20px; background: #f4f4f4; border-radius: 10px; border: 2px solid #B8860B; }
+
+        /* PERFECTLY CENTERED QR SCANNER */
+        .qr-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 30px auto;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid #B8860B;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(184, 134, 11, 0.3);
+            max-width: 250px;
+        }
+        .qr-area p {
+            font-family: var(--font-sub);
+            color: #1a3a6b; 
+            font-weight: 600; 
+            margin-bottom: 15px; 
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        #qrcode { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+        }
+        #qrcode img, #qrcode canvas { 
+            border-radius: 10px; 
+            box-shadow: 0 0 15px rgba(26, 58, 107, 0.4); 
+        }
 
         @media (max-width: 768px) {
             .tv-title { font-size: 2.5rem; }
-            .couple-name-big { font-size: 2.5rem; }
+            .tv-sub { font-size: 2.5rem; }
+            .couple-name-big { font-size: 2.2rem; }
+            .tagline-space { font-size: 2rem; }
             .card-glass { flex-direction: column; text-align: center; }
             .tv-frame { width: 95%; }
             .hero-img { height: 300px; }
+            .gp-header h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -337,9 +296,7 @@
                         <p class="tv-sub">Our Story Begins...</p>
                     </div>
                 </div>
-                <div class="power-btn-real" id="powerBtn">
-                    <div class="power-icon"></div>
-                </div>
+                <div class="power-btn-real" id="powerBtn"><div class="power-icon"></div></div>
             </div>
         </div>
     </div>
@@ -355,29 +312,23 @@
             <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=2070&auto=format&fit=crop" class="hero-img" alt="Hands">
             <div class="hero-overlay">
                 <div class="heart-anim">❤️</div>
-                <h2 style="font-family:'Cormorant Garamond'; font-size:2.5rem; letter-spacing:2px; text-shadow:0 2px 10px rgba(0,0,0,0.8);">ASWIN & HARINNI</h2>
+                <h2 style="font-family:var(--font-heading); font-size:2.5rem; letter-spacing:2px; text-shadow:0 2px 10px rgba(0,0,0,0.8);">ASWIN & HARINNI</h2>
             </div>
         </div>
 
         <div class="main-headings">
             <h1 class="couple-name-big">ASWIN SAKTHIVEL & HARINNI</h1>
-            <p class="tagline-space">A Love Story Written in the Stars ✨</p>
+            <p class="tagline-space">A Love Story Written in the Stars</p>
         </div>
 
         <div class="event-cards">
             <div class="card-glass" id="cardRec" onclick="goToPass()">
                 <div class="card-icon">🥂</div>
-                <div class="card-info">
-                    <h3>Reception</h3>
-                    <p>Nov 19, 2026 | 7:00 PM Onwards</p>
-                </div>
+                <div class="card-info"><h3>Reception</h3><p>Nov 19, 2026 | 7:00 PM Onwards</p></div>
             </div>
             <div class="card-glass" id="cardMar" onclick="goToPass()">
-                <div class="card-icon">💍</div>
-                <div class="card-info">
-                    <h3>Wedding Ceremony</h3>
-                    <p>Nov 20, 2026 | 4:30 AM - 6:00 AM</p>
-                </div>
+                <div class="card-icon"></div>
+                <div class="card-info"><h3>Wedding Ceremony</h3><p>Nov 20, 2026 | 4:30 AM - 6:00 AM</p></div>
             </div>
         </div>
 
@@ -399,27 +350,28 @@
             <div class="golden-card">
                 <div class="gp-header">
                     <h1>ASWIN & HARINNI</h1>
-                    <div style="color:#FFD700; letter-spacing:3px; font-size:0.9rem;">✨ GOLDEN BOARDING PASS ✨</div>
+                    <div style="color:#FFD700; letter-spacing:3px; font-size:0.9rem; font-family: var(--font-body);">✨ GOLDEN BOARDING PASS ✨</div>
                 </div>
                 <div class="gp-body">
                     <div class="status-strip">
-                        <div style="text-align:center;"><span style="display:block; font-size:1.4rem; font-weight:bold; color:#1a3a6b;">SINGLE</span><span style="font-size:0.7rem; color:#666;">Current</span></div>
+                        <div style="text-align:center;"><span style="display:block; font-size:1.4rem; font-weight:bold; color:#1a3a6b; font-family: var(--font-heading);">SINGLE</span><span style="font-size:0.7rem; color:#666;">Current</span></div>
                         <div style="font-size:2rem; color:#B8860B;">✈</div>
-                        <div style="text-align:center;"><span style="display:block; font-size:1.4rem; font-weight:bold; color:#1a3a6b;">MARRIED</span><span style="font-size:0.7rem; color:#666;">Destination</span></div>
+                        <div style="text-align:center;"><span style="display:block; font-size:1.4rem; font-weight:bold; color:#1a3a6b; font-family: var(--font-heading);">MARRIED</span><span style="font-size:0.7rem; color:#666;">Destination</span></div>
                     </div>
                     
-                    <h4 style="color:#1a3a6b; border-bottom:3px solid #B8860B; display:inline-block; margin-bottom:15px;">Reception</h4>
+                    <h4 style="color:#1a3a6b; border-bottom:3px solid #B8860B; display:inline-block; margin-bottom:15px; font-family: var(--font-sub); font-size: 1.3rem;">Reception</h4>
                     <div class="detail-item"><span>Date</span><span>Nov 19, 2026</span></div>
                     <div class="detail-item"><span>Time</span><span>7:00 PM Onwards</span></div>
                     <div class="detail-item"><span>Venue</span><span>Muneeswarar Temple</span></div>
 
-                    <h4 style="color:#1a3a6b; border-bottom:3px solid #B8860B; display:inline-block; margin:25px 0 15px;">Wedding</h4>
+                    <h4 style="color:#1a3a6b; border-bottom:3px solid #B8860B; display:inline-block; margin:25px 0 15px; font-family: var(--font-sub); font-size: 1.3rem;">Wedding</h4>
                     <div class="detail-item"><span>Date</span><span>Nov 20, 2026</span></div>
                     <div class="detail-item"><span>Muhurtham</span><span>4:30 AM - 6:00 AM</span></div>
                     <div class="detail-item"><span>Venue</span><span>Sri Angala Eshwari Temple</span></div>
 
+                    <!-- CENTERED QR SCANNER -->
                     <div class="qr-area">
-                        <p style="color:#1a3a6b; font-weight:600; margin-bottom:10px;">Scan for Location</p>
+                        <p>Scan for Venue Location</p>
                         <div id="qrcode"></div>
                     </div>
                 </div>
@@ -428,7 +380,7 @@
     </div>
 
     <script>
-        // ================= REALISTIC GALAXY & FALLING STARS ENGINE =================
+        // ================= REALISTIC GALAXY & FALLING STARS ENGINE (1000+ STARS) =================
         const canvas = document.getElementById('galaxy-canvas');
         const ctx = canvas.getContext('2d');
         let width, height;
@@ -443,18 +395,18 @@
         window.addEventListener('resize', resize);
         resize();
 
-        const starColors = ['#ffffff', '#ffe9c4', '#d4fbff', '#ffcccc'];
+        const starColors = ['#ffffff', '#ffe9c4', '#d4fbff', '#ffcccc', '#a18cd1'];
 
         class Star {
             constructor() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.size = Math.random() * 1.5;
+                this.size = Math.random() * 1.8;
                 this.baseOpacity = Math.random() * 0.8 + 0.2;
                 this.opacity = this.baseOpacity;
                 this.twinkleSpeed = Math.random() * 0.02 + 0.005;
                 this.color = starColors[Math.floor(Math.random() * starColors.length)];
-                this.isBright = this.size > 1.2;
+                this.isBright = this.size > 1.4;
             }
             update() {
                 this.opacity += this.twinkleSpeed;
@@ -464,7 +416,7 @@
                 ctx.fillStyle = this.color;
                 ctx.globalAlpha = this.opacity;
                 if (this.isBright) {
-                    ctx.shadowBlur = 8;
+                    ctx.shadowBlur = 10;
                     ctx.shadowColor = this.color;
                 } else {
                     ctx.shadowBlur = 0;
@@ -483,9 +435,9 @@
                 this.y = Math.random() * height;
                 this.radius = Math.random() * 300 + 200;
                 this.color = Math.random() > 0.5 ? '100, 50, 200' : '200, 50, 150';
-                this.vx = (Math.random() - 0.5) * 0.2;
-                this.vy = (Math.random() - 0.5) * 0.2;
-                this.opacity = Math.random() * 0.05 + 0.02;
+                this.vx = (Math.random() - 0.5) * 0.1;
+                this.vy = (Math.random() - 0.5) * 0.1;
+                this.opacity = Math.random() * 0.04 + 0.02;
             }
             update() {
                 this.x += this.vx;
@@ -506,7 +458,6 @@
             }
         }
 
-        // BRIGHT & VISIBLE FALLING STARS
         class FallingStar {
             constructor() {
                 this.reset();
@@ -514,9 +465,9 @@
             reset() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height * 0.5;
-                this.len = Math.random() * 200 + 100; // LONGER tail
-                this.speed = Math.random() * 20 + 15; // FASTER
-                this.size = Math.random() * 3 + 2; // BIGGER
+                this.len = Math.random() * 200 + 100;
+                this.speed = Math.random() * 20 + 15;
+                this.size = Math.random() * 3 + 2;
                 this.opacity = 1;
                 this.active = false;
                 this.angle = Math.PI / 4 + (Math.random() - 0.5) * 0.3;
@@ -539,24 +490,22 @@
                 const tailX = this.x - Math.cos(this.angle) * this.len;
                 const tailY = this.y - Math.sin(this.angle) * this.len;
                 
-                // BRIGHT Glowing Head
                 ctx.fillStyle = '#ffffff';
-                ctx.shadowBlur = 25; // STRONGER glow
-                ctx.shadowColor = '#00d4ff'; // Cyan glow
+                ctx.shadowBlur = 25;
+                ctx.shadowColor = '#00d4ff';
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
                 ctx.shadowBlur = 0;
 
-                // BRIGHT Fading Tail with blue tint
                 const gradient = ctx.createLinearGradient(this.x, this.y, tailX, tailY);
                 gradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`);
-                gradient.addColorStop(0.3, `rgba(0, 212, 255, ${this.opacity * 0.8})`); // Blue
-                gradient.addColorStop(0.6, `rgba(176, 38, 255, ${this.opacity * 0.5})`); // Purple
+                gradient.addColorStop(0.3, `rgba(0, 212, 255, ${this.opacity * 0.8})`);
+                gradient.addColorStop(0.6, `rgba(176, 38, 255, ${this.opacity * 0.5})`);
                 gradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
                 
                 ctx.strokeStyle = gradient;
-                ctx.lineWidth = this.size * 1.5; // THICKER tail
+                ctx.lineWidth = this.size * 1.5;
                 ctx.lineCap = 'round';
                 ctx.beginPath();
                 ctx.moveTo(this.x, this.y);
@@ -565,30 +514,24 @@
             }
         }
 
-        // Init
-        for(let i=0; i<400; i++) stars.push(new Star());
-        for(let i=0; i<8; i++) nebulaClouds.push(new NebulaCloud());
-        for(let i=0; i<12; i++) fallingStars.push(new FallingStar()); // MORE falling stars
+        // INIT 1200 STARS FOR DENSE GALAXY!
+        for(let i=0; i<1200; i++) stars.push(new Star());
+        for(let i=0; i<10; i++) nebulaClouds.push(new NebulaCloud());
+        for(let i=0; i<12; i++) fallingStars.push(new FallingStar());
 
         let frame = 0;
         function animate() {
             ctx.clearRect(0, 0, width, height);
-            
-            // Nebula
             ctx.globalCompositeOperation = 'screen';
             nebulaClouds.forEach(cloud => { cloud.update(); cloud.draw(); });
-            
-            // Stars
             ctx.globalCompositeOperation = 'source-over';
             stars.forEach(star => { star.update(); star.draw(); });
 
-            // Falling Stars - VERY FREQUENT
-            if (frame % 20 === 0) { // Spawn every 20 frames (MORE FREQUENT)
+            if (frame % 20 === 0) {
                 const inactive = fallingStars.find(s => !s.active);
                 if (inactive) inactive.activate();
             }
             fallingStars.forEach(s => { s.update(); s.draw(); });
-
             frame++;
             requestAnimationFrame(animate);
         }
@@ -632,7 +575,6 @@
         }
         function goToPass() { switchPage('page-netflix', 'page-golden'); }
 
-        // Tilt Effect
         function addTilt(id) {
             const el = document.getElementById(id);
             if(!el) return;
@@ -654,7 +596,7 @@
         // QR Code
         new QRCode(document.getElementById("qrcode"), {
             text: "https://maps.app.goo.gl/KNSmPB778uNF6SWX8",
-            width: 120, height: 120,
+            width: 150, height: 150,
             colorDark : "#1a3a6b", colorLight : "#ffffff",
             correctLevel : QRCode.CorrectLevel.H
         });
