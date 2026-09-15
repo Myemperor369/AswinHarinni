@@ -10,8 +10,7 @@
     <style>
         :root {
             --gold: #FFD700;
-            --dark-gold: #B8860B; /* Dark Goldenrod */
-            --deep-gold: #8B6508; /* Deep Metallic Gold */
+            --dark-gold: #B8860B;
             --deep-space: #020205;
             --neon-purple: #b026ff;
             --neon-blue: #00d4ff;
@@ -225,7 +224,7 @@
         .v-bar:nth-child(odd) { background: var(--neon-blue); animation-duration: 0.7s; box-shadow: 0 0 10px var(--neon-blue); }
         @keyframes vibrate { 0%,100% { height: 10%; } 50% { height: 100%; } }
 
-        /* ===== PAGE 3: GOLDEN PASS (DARK GOLDEN OUTLINE) ===== */
+        /* ===== PAGE 3: GOLDEN PASS - BOLD DARK GOLDEN OUTLINE ===== */
         .pass-page {
             min-height: 100vh;
             display: flex; flex-direction: column; align-items: center;
@@ -233,45 +232,81 @@
             position: relative; z-index: 10;
         }
         
-        /* Premium Dark Golden Metallic Frame */
+        /* ULTRA VISIBLE DARK GOLDEN METALLIC FRAME */
         .golden-card {
-            background: #fffdf5;
+            background: linear-gradient(135deg, #fffdf5 0%, #fff9e6 100%);
             border-radius: 20px;
             width: 100%; max-width: 600px;
             position: relative;
-            /* Multi-layered Dark Gold Outline */
+            /* BOLD Multi-layered Dark Gold Outline - VERY VISIBLE */
+            border: 8px solid transparent;
+            border-image: linear-gradient(135deg, #B8860B 0%, #FFD700 25%, #DAA520 50%, #FFD700 75%, #B8860B 100%) 1;
             box-shadow: 
-                inset 0 0 0 3px #B8860B,   /* Inner Dark Gold Line */
-                inset 0 0 0 6px #FFD700,   /* Inner Bright Gold Accent */
-                0 0 0 3px #8B6508,         /* Outer Deep Gold Line */
-                0 0 0 5px #B8860B,         /* Outer Mid Gold Line */
-                0 0 40px rgba(184, 134, 11, 0.6), /* Outer Golden Glow */
-                0 15px 50px rgba(0,0,0,0.8);      /* Deep Drop Shadow */
+                0 0 0 4px #8B6508,           /* Deep dark gold outer ring */
+                0 0 0 8px #B8860B,           /* Dark goldenrod ring */
+                0 0 30px rgba(184, 134, 11, 0.8),  /* Strong golden glow */
+                0 0 60px rgba(184, 134, 11, 0.5),  /* Extended glow */
+                0 20px 60px rgba(0,0,0,0.9);       /* Deep shadow */
             overflow: hidden;
-            animation: shimmer 4s infinite linear;
+            animation: goldenPulse 3s infinite ease-in-out;
         }
 
-        @keyframes shimmer {
-            0% { box-shadow: inset 0 0 0 3px #B8860B, inset 0 0 0 6px #FFD700, 0 0 0 3px #8B6508, 0 0 0 5px #B8860B, 0 0 30px rgba(184, 134, 11, 0.4), 0 15px 50px rgba(0,0,0,0.8); }
-            50% { box-shadow: inset 0 0 0 3px #DAA520, inset 0 0 0 6px #FFF8DC, 0 0 0 3px #B8860B, 0 0 0 5px #DAA520, 0 0 50px rgba(218, 165, 32, 0.8), 0 15px 50px rgba(0,0,0,0.8); }
-            100% { box-shadow: inset 0 0 0 3px #B8860B, inset 0 0 0 6px #FFD700, 0 0 0 3px #8B6508, 0 0 0 5px #B8860B, 0 0 30px rgba(184, 134, 11, 0.4), 0 15px 50px rgba(0,0,0,0.8); }
+        @keyframes goldenPulse {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 0 4px #8B6508,
+                    0 0 0 8px #B8860B,
+                    0 0 30px rgba(184, 134, 11, 0.8),
+                    0 0 60px rgba(184, 134, 11, 0.5),
+                    0 20px 60px rgba(0,0,0,0.9);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 0 4px #DAA520,
+                    0 0 0 8px #FFD700,
+                    0 0 50px rgba(255, 215, 0, 1),
+                    0 0 80px rgba(255, 215, 0, 0.7),
+                    0 20px 60px rgba(0,0,0,0.9);
+            }
+        }
+
+        /* Decorative corners */
+        .golden-card::before {
+            content: '✦';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 30px;
+            color: #B8860B;
+            text-shadow: 0 0 10px rgba(184, 134, 11, 0.8);
+            z-index: 10;
+        }
+        .golden-card::after {
+            content: '✦';
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            font-size: 30px;
+            color: #B8860B;
+            text-shadow: 0 0 10px rgba(184, 134, 11, 0.8);
+            z-index: 10;
         }
 
         .gp-header {
             background: linear-gradient(135deg, #1a3a6b, #0f172a);
             padding: 30px; text-align: center;
-            border-bottom: 3px solid #B8860B;
+            border-bottom: 4px solid #B8860B;
         }
         .gp-header h1 { color: #FFD700; font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; margin-bottom: 5px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         .gp-body { padding: 30px; color: #333; }
         .status-strip {
             display: flex; justify-content: space-between; align-items: center;
-            background: rgba(184, 134, 11, 0.1); border: 1px dashed #B8860B;
+            background: rgba(184, 134, 11, 0.15); border: 2px dashed #B8860B;
             padding: 20px; border-radius: 10px; margin-bottom: 30px;
         }
-        .detail-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee; }
+        .detail-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #ddd; }
         .detail-item:last-child { border-bottom: none; }
-        .qr-area { text-align: center; margin-top: 20px; padding: 20px; background: #f4f4f4; border-radius: 10px; border: 1px solid #B8860B; }
+        .qr-area { text-align: center; margin-top: 20px; padding: 20px; background: #f4f4f4; border-radius: 10px; border: 2px solid #B8860B; }
 
         @media (max-width: 768px) {
             .tv-title { font-size: 2.5rem; }
@@ -313,7 +348,7 @@
     <div id="page-netflix" class="page-section hidden">
         <div class="cosmic-nav">
             <button class="nav-btn" onclick="goBack('page-tv')">← Back</button>
-            <button class="nav-btn" id="musicBtn2" style="border-radius:50%; width:45px; height:45px; padding:0;">🎵</button>
+            <button class="nav-btn" id="musicBtn2" style="border-radius:50%; width:45px; height:45px; padding:0;"></button>
         </div>
 
         <div class="hero-banner" id="heroBanner">
@@ -364,7 +399,7 @@
             <div class="golden-card">
                 <div class="gp-header">
                     <h1>ASWIN & HARINNI</h1>
-                    <div style="color:#FFD700; letter-spacing:3px; font-size:0.9rem;">✨ GOLDEN BOARDING PASS </div>
+                    <div style="color:#FFD700; letter-spacing:3px; font-size:0.9rem;">✨ GOLDEN BOARDING PASS ✨</div>
                 </div>
                 <div class="gp-body">
                     <div class="status-strip">
@@ -373,12 +408,12 @@
                         <div style="text-align:center;"><span style="display:block; font-size:1.4rem; font-weight:bold; color:#1a3a6b;">MARRIED</span><span style="font-size:0.7rem; color:#666;">Destination</span></div>
                     </div>
                     
-                    <h4 style="color:#1a3a6b; border-bottom:2px solid #B8860B; display:inline-block; margin-bottom:15px;">Reception</h4>
+                    <h4 style="color:#1a3a6b; border-bottom:3px solid #B8860B; display:inline-block; margin-bottom:15px;">Reception</h4>
                     <div class="detail-item"><span>Date</span><span>Nov 19, 2026</span></div>
                     <div class="detail-item"><span>Time</span><span>7:00 PM Onwards</span></div>
                     <div class="detail-item"><span>Venue</span><span>Muneeswarar Temple</span></div>
 
-                    <h4 style="color:#1a3a6b; border-bottom:2px solid #B8860B; display:inline-block; margin:25px 0 15px;">Wedding</h4>
+                    <h4 style="color:#1a3a6b; border-bottom:3px solid #B8860B; display:inline-block; margin:25px 0 15px;">Wedding</h4>
                     <div class="detail-item"><span>Date</span><span>Nov 20, 2026</span></div>
                     <div class="detail-item"><span>Muhurtham</span><span>4:30 AM - 6:00 AM</span></div>
                     <div class="detail-item"><span>Venue</span><span>Sri Angala Eshwari Temple</span></div>
@@ -471,33 +506,32 @@
             }
         }
 
-        // REALISTIC FALLING STARS (METEORS)
+        // BRIGHT & VISIBLE FALLING STARS
         class FallingStar {
             constructor() {
                 this.reset();
             }
             reset() {
                 this.x = Math.random() * width;
-                this.y = Math.random() * height * 0.5; // Start from top half
-                this.len = Math.random() * 150 + 50; // Long tail
-                this.speed = Math.random() * 15 + 10; // Fast
-                this.size = Math.random() * 2.5 + 1.5;
+                this.y = Math.random() * height * 0.5;
+                this.len = Math.random() * 200 + 100; // LONGER tail
+                this.speed = Math.random() * 20 + 15; // FASTER
+                this.size = Math.random() * 3 + 2; // BIGGER
                 this.opacity = 1;
                 this.active = false;
-                this.angle = Math.PI / 4 + (Math.random() - 0.5) * 0.2; // Diagonal fall
+                this.angle = Math.PI / 4 + (Math.random() - 0.5) * 0.3;
             }
             activate() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height * 0.3;
                 this.active = true;
                 this.opacity = 1;
-                this.len = Math.random() * 150 + 50;
             }
             update() {
                 if (!this.active) return;
                 this.x += Math.cos(this.angle) * this.speed;
                 this.y += Math.sin(this.angle) * this.speed;
-                this.opacity -= 0.015;
+                this.opacity -= 0.01;
                 if (this.opacity <= 0 || this.y > height) this.active = false;
             }
             draw() {
@@ -505,23 +539,24 @@
                 const tailX = this.x - Math.cos(this.angle) * this.len;
                 const tailY = this.y - Math.sin(this.angle) * this.len;
                 
-                // Glowing Head
+                // BRIGHT Glowing Head
                 ctx.fillStyle = '#ffffff';
-                ctx.shadowBlur = 15;
-                ctx.shadowColor = '#ffffff';
+                ctx.shadowBlur = 25; // STRONGER glow
+                ctx.shadowColor = '#00d4ff'; // Cyan glow
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
                 ctx.shadowBlur = 0;
 
-                // Fading Tail
+                // BRIGHT Fading Tail with blue tint
                 const gradient = ctx.createLinearGradient(this.x, this.y, tailX, tailY);
                 gradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`);
-                gradient.addColorStop(0.4, `rgba(200, 220, 255, ${this.opacity * 0.6})`);
+                gradient.addColorStop(0.3, `rgba(0, 212, 255, ${this.opacity * 0.8})`); // Blue
+                gradient.addColorStop(0.6, `rgba(176, 38, 255, ${this.opacity * 0.5})`); // Purple
                 gradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
                 
                 ctx.strokeStyle = gradient;
-                ctx.lineWidth = this.size;
+                ctx.lineWidth = this.size * 1.5; // THICKER tail
                 ctx.lineCap = 'round';
                 ctx.beginPath();
                 ctx.moveTo(this.x, this.y);
@@ -533,7 +568,7 @@
         // Init
         for(let i=0; i<400; i++) stars.push(new Star());
         for(let i=0; i<8; i++) nebulaClouds.push(new NebulaCloud());
-        for(let i=0; i<8; i++) fallingStars.push(new FallingStar()); // More falling stars
+        for(let i=0; i<12; i++) fallingStars.push(new FallingStar()); // MORE falling stars
 
         let frame = 0;
         function animate() {
@@ -547,8 +582,8 @@
             ctx.globalCompositeOperation = 'source-over';
             stars.forEach(star => { star.update(); star.draw(); });
 
-            // Falling Stars (Frequent spawn)
-            if (frame % 40 === 0) { // Spawn every 40 frames
+            // Falling Stars - VERY FREQUENT
+            if (frame % 20 === 0) { // Spawn every 20 frames (MORE FREQUENT)
                 const inactive = fallingStars.find(s => !s.active);
                 if (inactive) inactive.activate();
             }
