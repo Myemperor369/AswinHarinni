@@ -429,21 +429,44 @@
     .countdown-box small { font-size: 9px; letter-spacing: 1px; color: rgba(255,255,255,0.6); text-transform: uppercase; margin-top: 4px; }
     .countdown-sep { font-size: 24px; color: var(--gold); font-weight: 700; margin-bottom: 14px; }
 
+    .ticket-spotlight {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      padding-top: 22px;
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
+      50% { opacity: 1; transform: translateX(-50%) scale(1.06); }
+    }
+    .ticket-spotlight::before {
+      content: '';
+      position: absolute;
+      top: -40px; left: 50%;
+      transform: translateX(-50%);
+      width: 340px; height: 260px;
+      background: radial-gradient(ellipse at center, rgba(255,215,0,0.22) 0%, rgba(255,215,0,0.08) 45%, transparent 72%);
+      filter: blur(6px);
+      pointer-events: none;
+      animation: glowPulse 6s ease-in-out infinite;
+      z-index: 0;
+    }
     .movie-ticket {
       position: relative;
+      z-index: 1;
       display: flex;
       align-items: stretch;
       background:
-        radial-gradient(circle at 78% 75%, rgba(120,72,20,0.16) 0%, rgba(120,72,20,0.05) 9%, transparent 12%),
-        radial-gradient(ellipse at 15% 20%, rgba(139,69,19,0.12) 0%, transparent 45%),
-        radial-gradient(ellipse at 85% 15%, rgba(139,69,19,0.1) 0%, transparent 40%),
-        radial-gradient(ellipse at 40% 90%, rgba(139,69,19,0.1) 0%, transparent 45%),
-        linear-gradient(135deg, #efe1bd, #e3d09e 55%, #ecdcb8);
-      border: 1px solid rgba(90, 58, 30, 0.55);
+        radial-gradient(circle at 78% 75%, rgba(90,54,15,0.2) 0%, rgba(90,54,15,0.06) 9%, transparent 12%),
+        radial-gradient(ellipse at 15% 20%, rgba(90,54,15,0.15) 0%, transparent 45%),
+        radial-gradient(ellipse at 85% 15%, rgba(90,54,15,0.13) 0%, transparent 40%),
+        radial-gradient(ellipse at 40% 90%, rgba(90,54,15,0.13) 0%, transparent 45%),
+        linear-gradient(135deg, #ddc48f, #c9aa68 55%, #d6bb85);
+      border: 1px solid rgba(255, 215, 0, 0.4);
       border-radius: 4px;
       cursor: pointer;
       overflow: visible;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 40px rgba(90,58,30,0.15), inset 0 0 0 4px rgba(255,250,235,0.4);
+      box-shadow: 0 20px 55px rgba(0,0,0,0.6), 0 0 40px rgba(255,215,0,0.12), inset 0 0 40px rgba(90,54,15,0.2), inset 0 0 0 4px rgba(255,248,225,0.35);
       transition: all 0.35s ease;
       transform: rotate(-1.5deg);
       margin: 18px 6px 24px;
@@ -464,55 +487,80 @@
     .movie-ticket::after { bottom: -7px; transform: rotate(180deg); }
     .movie-ticket:hover {
       transform: rotate(0deg) translateY(-4px);
-      box-shadow: 0 25px 60px rgba(0,0,0,0.55), inset 0 0 30px rgba(139,69,19,0.1);
+      box-shadow: 0 25px 65px rgba(0,0,0,0.65), 0 0 55px rgba(255,215,0,0.25), inset 0 0 30px rgba(90,54,15,0.15);
     }
-    .ticket-stamp {
+    .ticket-ribbon {
       position: absolute;
-      top: -22px; right: 10px;
-      width: 74px; height: 74px;
-      border: 3px double rgba(139,26,26,0.8);
-      border-radius: 50%;
-      color: rgba(139,26,26,0.8);
+      top: -16px; left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #8b1a1a, #5c1010);
+      color: #f2e6c8;
       font-family: 'Special Elite', monospace;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      padding: 7px 22px;
+      white-space: nowrap;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+      z-index: 3;
+      clip-path: polygon(0 0, 100% 0, 92% 50%, 100% 100%, 0 100%, 8% 50%);
+    }
+    .ticket-ribbon i { font-size: 9px; color: #e8b4b4; margin: 0 4px; }
+    .ticket-floral {
+      position: absolute;
+      font-size: 26px;
+      opacity: 0.85;
+      z-index: 2;
+      filter: saturate(0.85);
+      pointer-events: none;
+    }
+    .ticket-floral.top-left { top: 20px; left: 14px; transform: rotate(-8deg); }
+    .ticket-floral.bottom-right { bottom: 16px; right: 100px; transform: rotate(6deg) scaleX(-1); }
+    .ticket-main { flex: 1; padding: 38px 28px 24px; position: relative; min-width: 0; }
+    .ticket-row { display: flex; align-items: center; gap: 18px; margin-top: 4px; }
+    .rings-medallion {
+      position: relative;
+      width: 58px; height: 58px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: radial-gradient(circle, #8b1a1a, #5c1010);
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      line-height: 1.3;
-      transform: rotate(-16deg);
-      z-index: 3;
-      background: rgba(242, 230, 200, 0.5);
-      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+      box-shadow: 0 5px 16px rgba(139,26,26,0.45), 0 0 0 3px rgba(255,215,0,0.3);
     }
-    .ticket-stamp::before {
-      content: '★';
+    .rings-medallion i.fa-ring { font-size: 20px; color: var(--gold-light); }
+    .rings-medallion .mini-heart {
       position: absolute;
-      top: 6px;
-      font-size: 8px;
-      opacity: 0.7;
+      top: -9px; left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      color: #8b1a1a;
     }
-    .ticket-main { flex: 1; padding: 32px 28px 22px; position: relative; min-width: 0; }
-    .ticket-label {
+    .ticket-heading {
+      font-family: 'Dancing Script', cursive;
+      font-size: 30px;
+      font-weight: 700;
+      color: #6b1414;
+      line-height: 1.15;
+    }
+    .ticket-divider {
+      display: flex;
+      align-items: center;
+      margin: 14px 0 12px;
+      border-top: 1px dashed rgba(107,20,20,0.4);
+      position: relative;
+    }
+    .ticket-divider span {
       position: absolute;
-      top: -13px; left: 24px;
-      background: #8b1a1a;
-      color: #f2e6c8;
-      font-family: 'Special Elite', monospace;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: #e0c98a;
+      padding: 0 10px;
       font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 2px;
-      padding: 5px 14px;
-      text-transform: uppercase;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      white-space: nowrap;
+      color: #8b1a1a;
     }
-    .ticket-row { display: flex; align-items: center; gap: 20px; margin-top: 10px; }
-    .ticket-row .card-icon { background: linear-gradient(135deg, #8b1a1a, #5c1010); box-shadow: 0 5px 16px rgba(139,26,26,0.4); }
-    .ticket-heading { font-family: 'Special Elite', monospace; font-size: 20px; font-weight: 400; color: #3d2b1f; letter-spacing: 0.5px; }
-    .ticket-serial { margin-top: 16px; font-family: 'Special Elite', monospace; font-size: 9px; letter-spacing: 1px; color: rgba(61,43,31,0.65); text-transform: uppercase; }
+    .ticket-serial { font-family: 'Special Elite', monospace; font-size: 9px; letter-spacing: 1px; color: rgba(61,43,31,0.65); text-transform: uppercase; }
     .ticket-barcode {
       margin-top: 14px;
       height: 26px;
@@ -520,6 +568,16 @@
       border-radius: 2px;
       opacity: 0.6;
     }
+    .ticket-tagline {
+      margin-top: 14px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #6b1414;
+      text-align: center;
+    }
+    .ticket-tagline i { font-size: 10px; color: #8b1a1a; margin: 0 4px; }
     .ticket-stub {
       width: 92px;
       flex-shrink: 0;
@@ -527,10 +585,11 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
       position: relative;
       border-left: 2px dashed rgba(122, 31, 43, 0.55);
       color: #8b1a1a;
+      padding: 16px 0;
     }
     .ticket-stub::before,
     .ticket-stub::after {
@@ -543,7 +602,20 @@
     }
     .ticket-stub::before { top: -13px; }
     .ticket-stub::after { bottom: -13px; }
-    .ticket-stub i.fa-heart { font-size: 18px; color: #8b1a1a; }
+    .stub-admit {
+      font-family: 'Special Elite', monospace;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-align: center;
+      line-height: 1.3;
+      border: 2px double rgba(139,26,26,0.7);
+      border-radius: 50%;
+      width: 52px; height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ticket-stub i.fa-heart { font-size: 16px; color: #8b1a1a; }
     .ticket-stub span { writing-mode: vertical-rl; transform: rotate(180deg); font-family: 'Special Elite', monospace; font-size: 10px; letter-spacing: 2px; font-weight: 400; color: #3d2b1f; }
     .ticket-stub i.fa-chevron-right { font-size: 14px; transform: rotate(90deg); opacity: 0.7; transition: all 0.3s ease; }
     .movie-ticket:hover .ticket-stub i.fa-chevron-right { opacity: 1; transform: rotate(90deg) translateY(3px); }
@@ -805,22 +877,31 @@
       </div>
 
       <div class="event-cards">
+        <div class="ticket-spotlight">
         <div class="movie-ticket" onclick="showPage('passPage')">
-          <div class="ticket-stamp">ADMIT<br>ONE</div>
+          <div class="ticket-ribbon"><i class="fas fa-heart"></i> ADMIT TWO <i class="fas fa-heart"></i></div>
+          <div class="ticket-floral top-left">🌸🌿</div>
+          <div class="ticket-floral bottom-right">🌿🌸</div>
           <div class="ticket-main">
-            <div class="ticket-label">✦ ADMIT TWO ✦</div>
             <div class="ticket-row">
-              <div class="card-icon"><i class="fas fa-ring"></i></div>
-              <div class="ticket-heading">Reception & Marriage</div>
+              <div class="rings-medallion">
+                <i class="fas fa-heart mini-heart"></i>
+                <i class="fas fa-ring"></i>
+              </div>
+              <div class="ticket-heading">Reception<br>&amp; Wedding</div>
             </div>
+            <div class="ticket-divider"><span><i class="fas fa-heart"></i></span></div>
             <div class="ticket-serial">SEAT A1-A2 &nbsp;•&nbsp; SCREEN: FOREVER &nbsp;•&nbsp; NO. 002026</div>
             <div class="ticket-barcode"></div>
+            <div class="ticket-tagline"><i class="fas fa-heart"></i> OUR FOREVER BEGINS HERE <i class="fas fa-heart"></i></div>
           </div>
           <div class="ticket-stub">
+            <div class="stub-admit">ADMIT<br>TWO</div>
             <i class="fas fa-heart"></i>
             <span>TAP&nbsp;FOR&nbsp;PASS</span>
             <i class="fas fa-chevron-right"></i>
           </div>
+        </div>
         </div>
       </div>
 
