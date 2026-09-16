@@ -7,7 +7,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Great+Vibes&family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Great+Vibes&family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
@@ -433,43 +433,92 @@
       position: relative;
       display: flex;
       align-items: stretch;
-      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,215,0,0.04));
-      border: 1px solid rgba(255,215,0,0.35);
-      border-radius: 18px;
+      background:
+        radial-gradient(circle at 78% 75%, rgba(120,72,20,0.16) 0%, rgba(120,72,20,0.05) 9%, transparent 12%),
+        radial-gradient(ellipse at 15% 20%, rgba(139,69,19,0.12) 0%, transparent 45%),
+        radial-gradient(ellipse at 85% 15%, rgba(139,69,19,0.1) 0%, transparent 40%),
+        radial-gradient(ellipse at 40% 90%, rgba(139,69,19,0.1) 0%, transparent 45%),
+        linear-gradient(135deg, #efe1bd, #e3d09e 55%, #ecdcb8);
+      border: 1px solid rgba(90, 58, 30, 0.55);
+      border-radius: 4px;
       cursor: pointer;
       overflow: visible;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 40px rgba(90,58,30,0.15), inset 0 0 0 4px rgba(255,250,235,0.4);
       transition: all 0.35s ease;
+      transform: rotate(-1.5deg);
+      margin: 18px 6px 24px;
     }
-    .movie-ticket:hover {
-      transform: translateY(-4px);
-      border-color: var(--gold);
-      box-shadow: 0 25px 60px rgba(255,215,0,0.3);
-    }
-    .ticket-main { flex: 1; padding: 30px 28px 22px; position: relative; min-width: 0; }
-    .ticket-label {
+    .movie-ticket::before,
+    .movie-ticket::after {
+      content: '';
       position: absolute;
-      top: -14px; left: 24px;
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-      color: #1a0b2e;
+      left: 0; right: 0; height: 14px;
+      background-image:
+        linear-gradient(45deg, transparent 7px, #100c26 7px),
+        linear-gradient(-45deg, transparent 7px, #100c26 7px);
+      background-size: 14px 14px;
+      background-position: 0 0;
+      background-repeat: repeat-x;
+    }
+    .movie-ticket::before { top: -7px; }
+    .movie-ticket::after { bottom: -7px; transform: rotate(180deg); }
+    .movie-ticket:hover {
+      transform: rotate(0deg) translateY(-4px);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.55), inset 0 0 30px rgba(139,69,19,0.1);
+    }
+    .ticket-stamp {
+      position: absolute;
+      top: -22px; right: 10px;
+      width: 74px; height: 74px;
+      border: 3px double rgba(139,26,26,0.8);
+      border-radius: 50%;
+      color: rgba(139,26,26,0.8);
+      font-family: 'Special Elite', monospace;
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 1.5px;
-      padding: 5px 16px;
-      border-radius: 20px;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1.3;
+      transform: rotate(-16deg);
+      z-index: 3;
+      background: rgba(242, 230, 200, 0.5);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    }
+    .ticket-stamp::before {
+      content: '★';
+      position: absolute;
+      top: 6px;
+      font-size: 8px;
+      opacity: 0.7;
+    }
+    .ticket-main { flex: 1; padding: 32px 28px 22px; position: relative; min-width: 0; }
+    .ticket-label {
+      position: absolute;
+      top: -13px; left: 24px;
+      background: #8b1a1a;
+      color: #f2e6c8;
+      font-family: 'Special Elite', monospace;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      padding: 5px 14px;
       text-transform: uppercase;
-      box-shadow: 0 4px 14px rgba(255,215,0,0.45);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       white-space: nowrap;
     }
     .ticket-row { display: flex; align-items: center; gap: 20px; margin-top: 10px; }
-    .ticket-heading { font-size: 22px; font-weight: 700; color: #fff; }
-    .ticket-serial { margin-top: 16px; font-size: 10px; letter-spacing: 1px; color: rgba(255,255,255,0.45); text-transform: uppercase; }
+    .ticket-row .card-icon { background: linear-gradient(135deg, #8b1a1a, #5c1010); box-shadow: 0 5px 16px rgba(139,26,26,0.4); }
+    .ticket-heading { font-family: 'Special Elite', monospace; font-size: 20px; font-weight: 400; color: #3d2b1f; letter-spacing: 0.5px; }
+    .ticket-serial { margin-top: 16px; font-family: 'Special Elite', monospace; font-size: 9px; letter-spacing: 1px; color: rgba(61,43,31,0.65); text-transform: uppercase; }
     .ticket-barcode {
       margin-top: 14px;
-      height: 28px;
-      background: repeating-linear-gradient(90deg, rgba(255,255,255,0.7) 0 2px, transparent 2px 5px, rgba(255,255,255,0.4) 5px 6px, transparent 6px 10px);
-      border-radius: 4px;
-      opacity: 0.5;
+      height: 26px;
+      background: repeating-linear-gradient(90deg, rgba(61,43,31,0.8) 0 2px, transparent 2px 5px, rgba(61,43,31,0.5) 5px 6px, transparent 6px 10px);
+      border-radius: 2px;
+      opacity: 0.6;
     }
     .ticket-stub {
       width: 92px;
@@ -480,8 +529,8 @@
       justify-content: center;
       gap: 12px;
       position: relative;
-      border-left: 2px dashed rgba(255,215,0,0.45);
-      color: var(--gold-light);
+      border-left: 2px dashed rgba(122, 31, 43, 0.55);
+      color: #8b1a1a;
     }
     .ticket-stub::before,
     .ticket-stub::after {
@@ -489,14 +538,13 @@
       position: absolute;
       left: -13px;
       width: 26px; height: 26px;
-      background: #0f0c29;
+      background: #100c26;
       border-radius: 50%;
-      box-shadow: inset 0 0 0 2px rgba(255,215,0,0.35);
     }
     .ticket-stub::before { top: -13px; }
     .ticket-stub::after { bottom: -13px; }
-    .ticket-stub i.fa-heart { font-size: 18px; color: #ff6b6b; }
-    .ticket-stub span { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 11px; letter-spacing: 2px; font-weight: 600; }
+    .ticket-stub i.fa-heart { font-size: 18px; color: #8b1a1a; }
+    .ticket-stub span { writing-mode: vertical-rl; transform: rotate(180deg); font-family: 'Special Elite', monospace; font-size: 10px; letter-spacing: 2px; font-weight: 400; color: #3d2b1f; }
     .ticket-stub i.fa-chevron-right { font-size: 14px; transform: rotate(90deg); opacity: 0.7; transition: all 0.3s ease; }
     .movie-ticket:hover .ticket-stub i.fa-chevron-right { opacity: 1; transform: rotate(90deg) translateY(3px); }
 
@@ -651,6 +699,19 @@
     #qrcode { display: inline-block; padding: 15px; background: white; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); margin-bottom: 15px; }
     .qr-text { font-size: 14px; color: #666; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; }
     .qr-text i { color: var(--netflix-red); font-size: 16px; }
+    .qr-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #1e3c72;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      word-break: break-word;
+    }
+    .qr-link:hover { color: var(--netflix-red); }
 
     /* ============ RESPONSIVE ============ */
     @media (max-width: 768px) {
@@ -745,8 +806,9 @@
 
       <div class="event-cards">
         <div class="movie-ticket" onclick="showPage('passPage')">
+          <div class="ticket-stamp">ADMIT<br>ONE</div>
           <div class="ticket-main">
-            <div class="ticket-label">🎟️ E-TICKET</div>
+            <div class="ticket-label">✦ ADMIT TWO ✦</div>
             <div class="ticket-row">
               <div class="card-icon"><i class="fas fa-ring"></i></div>
               <div class="ticket-heading">Reception & Marriage</div>
@@ -845,6 +907,9 @@
             <i class="fas fa-map-marker-alt"></i>
             Scan to get directions on Google Maps
           </div>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=653C%2B3FC%2C%20PT%20Murthy%20Nagar%2C%20Attanthangal%2C%20Tamil%20Nadu%20600052&travelmode=driving" target="_blank" rel="noopener" class="qr-link">
+            <i class="fas fa-location-arrow"></i> 653C+3FC, PT Murthy Nagar, Attanthangal, TN 600052
+          </a>
         </div>
       </div>
     </div>
